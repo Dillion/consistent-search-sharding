@@ -102,7 +102,7 @@ func main() {
 	var maxLoadChange int64 = 500
 	modifyLoad(workspaceLoad, minLoadChange, maxLoadChange)
 	changes := calcNodeAssignment(c, keys, workspaceLoad, workspaceMap, false, true)
-	fmt.Printf("Single load update across %d nodes and %d workspaces makes %d rebalances\n", maxNodes, maxWorkspaces, changes)
+	fmt.Printf("Single load update across %d nodes and %d workspaces makes %d reshardings\n", maxNodes, maxWorkspaces, changes)
 
 	// get stats of numUpdates load modifications
 	numUpdates := 10000
@@ -122,10 +122,10 @@ func main() {
 	min, max, avg, stdDev := calculateStats(allChanges)
 	msg := fmt.Sprintf("%d updates across %d nodes, %d workspaces", numUpdates, maxNodes, maxWorkspaces)
 	log.Println(msg)
-    fmt.Printf("Min: %d\n", min)
-    fmt.Printf("Max: %d\n", max)
-    fmt.Printf("Average: %.2f\n", avg)
-    fmt.Printf("Standard Deviation: %.2f\n", stdDev)
+	fmt.Printf("Min: %d\n", min)
+	fmt.Printf("Max: %d\n", max)
+	fmt.Printf("Average: %.2f\n", avg)
+	fmt.Printf("Standard Deviation: %.2f\n", stdDev)
 	// Recorded values for 5 nodes and 200 workspaces:
 	// Average: 26.35
 	// Standard Deviation: 9.18
@@ -135,7 +135,7 @@ func main() {
 	// Average: 181.96
 	// Standard Deviation: 35.22
 	// 95% of changes are below 252.4
-	// As num workspaces increase, less rebalancing occurs!!
+	// As num workspaces increase, less resharding occurs!!
 
 	// now lets benchmark change in nodes and workspaces
 	// Assume:
@@ -207,10 +207,10 @@ func main() {
 	}
 	min, max, avg, stdDev = calculateStats(allChanges)
 	_, _, avgAdditions, _ := calculateStats(additionsCount)
-	msg = fmt.Sprintf("Workspace rebalances when new node added, after average of %f additions with starting %d workspaces", avgAdditions, maxWorkspaces)
+	msg = fmt.Sprintf("Workspaces resharded when new node added, after average of %f additions with starting %d workspaces", avgAdditions, maxWorkspaces)
 	log.Println(msg)
-    fmt.Printf("Min: %d\n", min)
-    fmt.Printf("Max: %d\n", max)
-    fmt.Printf("Average: %.2f\n", avg)
-    fmt.Printf("Standard Deviation: %.2f\n", stdDev)
+	fmt.Printf("Min: %d\n", min)
+	fmt.Printf("Max: %d\n", max)
+	fmt.Printf("Average: %.2f\n", avg)
+	fmt.Printf("Standard Deviation: %.2f\n", stdDev)
 }

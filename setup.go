@@ -11,8 +11,8 @@ import (
 func newConsistentHash(maxNodes int) *consistent.Consistent {
 	c := consistent.New()
 	for i := 1; i <= maxNodes; i++ {
-        c.Add(strconv.Itoa(i))
-    }
+		c.Add(strconv.Itoa(i))
+	}
 	return c
 }
 
@@ -45,12 +45,12 @@ func initRealm(maxWorkspaces int, maxNodes int, suppressLog bool) (*consistent.C
 	workspaceLoad := make(map[string]int64) // map of workspaceId to load
 	
 	// build initial workspaceLoad map
-    for i := 0; i < maxWorkspaces; i++ {
-        newUUID := uuid.New()
+	for i := 0; i < maxWorkspaces; i++ {
+		newUUID := uuid.New()
 		workspaceId := newUUID.String()
 		workspaceLoad[workspaceId] = 0
 		keys = append(keys, workspaceId)
-    }
+	}
 	setLoad(workspaceLoad, 2000)
 
 	// calculate hashed position from load snapshot

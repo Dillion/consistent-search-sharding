@@ -37,4 +37,4 @@ On average, when a new node is added, 95% of resharding involves less than 30% o
   
 **About**
 
-This repository performs some simulations of the above solution, by generating workspace ids and corresponding load, assigning them to nodes, making load and node changes to assess the impact of resharding that occurs.
+This repository performs some simulations of the above solution, by generating workspace ids and corresponding load, assigning them to nodes, making load and node changes to assess the impact of resharding that occurs. go build and ./chwbl to run.
